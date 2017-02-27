@@ -1,0 +1,40 @@
+<!--
+ * Copyright (c) 2014 Cisco Systems, Inc. and others.  All rights reserved.
+ *
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ * and is available at http://www.eclipse.org/legal/epl-v10.html
+-->
+
+<div class="form-group searchDiv">
+   <!-- <input class="form-control" ng-model="SwitchSearch.id" placeholder="{{'SEARCH_SWITCH' | translate}}">
+   -->
+    <input class="form-control" ng-model="dpiSearch.id" placeholder="{{'SEARCH_DPI' | translate}}">
+</div>
+<table class="footable table">
+	<thead>
+      <tr>
+        <th>{{ 'SWITCH_ID' | translate }}</th>
+        <th>{{ 'SWITCH_NAME' | translate }}</th>
+        <th>{{ 'DPI_NAME' | translate }}</th>
+        <th data-sort-ignore="true">{{ 'OPTIONS' | translate }}</th>
+      </tr>
+	</thead>
+	<tbody>
+	    <tr ng-hide=" data['dpi-rule'].length > 0 "><td colspan="5" class="centerAlign">{{ 'NO_DATA_FOUND' | translate }}</td></tr>
+		<tr ng-repeat="rule in data['dpi-rule']" node-table>
+        <td>{{data['switch-ip']}}</td>
+        <td>{{data['switch-name']}}</td>
+        <td>{{rule['rule-name']}}</td>
+        <td>{{rule['rule-text']}}</td>
+      </tr>
+
+	</tbody>
+    <tfoot class="hide-if-no-paging">
+      <tr>
+        <td colspan="4">
+          <div class="pagination pagination-centered"></div>
+        </td>
+      </tr>
+    </tfoot>
+</table>
